@@ -3,160 +3,224 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
   <title>Two Steps Behind</title>
-  <meta name="description" content="Observations from the human field. Short writings and quiet signals." />
+  <meta name="description" content="Observations from the human field." />
 
   <style>
     :root{
-      --bg: #1b1a17;            /* varm mørk bakgrunn */
-      --card: #24221d;          /* jord */
-      --text: #f1eee7;          /* myk, ikke hvit */
-      --muted: rgba(241,238,231,.65);
-      --hair: rgba(241,238,231,.12);
-      --shadow: 0 14px 40px rgba(0,0,0,.45);
-      --radius: 18px;
-      --accent: #e7c78f;
+      --bg:#141210;
+      --card:#1d1a16;
+      --text:#f1eee7;
+      --muted:rgba(241,238,231,.72);
+      --hair:rgba(241,238,231,.12);
+      --accent:#e7cf9a;
+      --shadow:0 16px 50px rgba(0,0,0,.55);
+      --radius:18px;
     }
 
-    *{ box-sizing: border-box; }
-
+    *{box-sizing:border-box}
     body{
       margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-      color: var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
       background:
-        radial-gradient(1200px 600px at 20% 0%, #2a261f 0%, transparent 60%),
-        radial-gradient(1000px 500px at 80% 20%, #231f19 0%, transparent 60%),
+        radial-gradient(900px 500px at 20% 0%, rgba(150,60,35,.28), transparent 55%),
+        radial-gradient(900px 500px at 80% 10%, rgba(25,120,160,.22), transparent 55%),
+        radial-gradient(1200px 700px at 50% 100%, rgba(190,150,70,.18), transparent 60%),
         var(--bg);
+      min-height:100vh;
     }
 
-    a{ color: inherit; text-decoration: none; }
+    .wrap{
+      max-width:980px;
+      margin:0 auto;
+      padding:28px 18px 60px;
+    }
 
-    /* ---------- HEADER ---------- */
     header{
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 22px 24px;
       display:flex;
       align-items:center;
       justify-content:space-between;
+      gap:16px;
+      padding:12px 0 18px;
+      border-bottom:1px solid var(--hair);
     }
 
     .brand{
       display:flex;
       align-items:center;
-      gap:14px;
+      gap:12px;
+      text-decoration:none;
+      color:var(--text);
     }
 
     .logo{
       width:44px;
       height:44px;
-      object-fit:contain;
       border-radius:12px;
-      border:1px solid var(--hair);
-      box-shadow: var(--shadow);
-      background:#000;
+      object-fit:cover;
+      box-shadow:0 10px 30px rgba(0,0,0,.45);
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04);
     }
 
-    .brand span{
-      font-weight:600;
-      letter-spacing:.3px;
+    .brand strong{
+      font-size:18px;
+      letter-spacing:.2px;
     }
 
     nav{
       display:flex;
-      gap:18px;
-      font-size:14px;
-      color: var(--muted);
-    }
-
-    nav a:hover{ color: var(--text); }
-
-    /* ---------- HERO ---------- */
-    main{
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 40px 24px 80px;
-    }
-
-    .hero{
-      background: linear-gradient(
-        180deg,
-        rgba(255,255,255,.04),
-        rgba(255,255,255,0)
-      );
-      border:1px solid var(--hair);
-      border-radius: var(--radius);
-      padding: 48px;
-      box-shadow: var(--shadow);
-      max-width: 760px;
-    }
-
-    .hero h1{
-      margin:0 0 12px;
-      font-size: clamp(28px, 4vw, 42px);
-      line-height:1.2;
-    }
-
-    .hero p{
-      margin:0 0 28px;
-      color: var(--muted);
-      font-size:16px;
-      line-height:1.6;
-    }
-
-    .actions{
-      display:flex;
-      gap:14px;
+      gap:10px;
       flex-wrap:wrap;
     }
 
+    nav a{
+      color:var(--muted);
+      text-decoration:none;
+      padding:8px 10px;
+      border-radius:12px;
+      border:1px solid transparent;
+    }
+    nav a:hover{
+      color:var(--text);
+      border-color:rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04);
+    }
+
+    .hero{
+      margin-top:26px;
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:28px;
+      overflow:hidden;
+    }
+
+    .hero h1{
+      margin:0 0 8px;
+      font-size:44px;
+      letter-spacing:-.5px;
+    }
+    .hero p{
+      margin:0 0 18px;
+      color:var(--muted);
+      line-height:1.55;
+      max-width:72ch;
+    }
+
+    .cta{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+
     .btn{
-      padding:12px 18px;
+      display:inline-block;
+      padding:12px 16px;
       border-radius:14px;
-      border:1px solid var(--hair);
-      background: transparent;
-      color: var(--text);
-      font-weight:500;
+      text-decoration:none;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+      font-weight:600;
     }
-
     .btn.primary{
-      background: var(--accent);
-      color:#1b1a17;
-      border-color: transparent;
+      background:var(--accent);
+      color:#1a140c;
+      border-color:rgba(0,0,0,.15);
     }
 
-    .btn:hover{ opacity:.9; }
+    .grid{
+      display:grid;
+      grid-template-columns: 1.6fr 1fr;
+      gap:16px;
+      margin-top:16px;
+    }
+    @media (max-width:860px){
+      .grid{grid-template-columns:1fr}
+      .hero h1{font-size:36px}
+    }
 
-    /* ---------- FOOTER ---------- */
+    .card{
+      background:rgba(0,0,0,.18);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:var(--radius);
+      padding:18px;
+    }
+    .card h2{
+      margin:0 0 8px;
+      font-size:16px;
+      letter-spacing:.2px;
+    }
+    .card p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.55;
+    }
+
     footer{
-      max-width:1100px;
-      margin:60px auto 0;
-      padding:24px;
-      color: var(--muted);
-      font-size:14px;
+      margin-top:24px;
+      padding-top:18px;
+      border-top:1px solid var(--hair);
+      color:rgba(241,238,231,.55);
+      font-size:13px;
     }
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;}
   </style>
 </head>
 
 <body>
+  <div class="wrap">
+    <header>
+      <a class="brand" href="index.html">
+        <!-- IMPORTANT:
+             If your logo file is in the repo root, keep src="logo.png"
+             If your logo is inside /assets, change to src="assets/logo.png"
+        -->
+        <img class="logo" src="logo.png" alt="TwoStepsBehind logo" />
+        <strong>TwoStepsBehind</strong>
+      </a>
 
-  <header>
-    <a class="brand" href="index.html">
-      <img src="assets/logo.png" alt="Two Steps Behind logo" class="logo" />
-      <span>Two Steps Behind</span>
-    </a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="posts.html">Posts</a>
+      </nav>
+    </header>
 
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="posts.html">Posts</a>
-      <a href="#about">About</a>
-    </nav>
-  </header>
-
-  <main>
     <section class="hero">
-      <h1>Observations from the human field</h1>
+      <h1>Observations from the human field.</h1>
       <p>
-        A living project — writings, reflections, and small signals gathered
+        A living project — writings, reflections, and small signals gathered along the road.
+        Not a brand. Not a performance. Just what’s real enough to share.
+      </p>
+
+      <div class="cta">
+        <a class="btn primary" href="posts.html">Enter posts</a>
+        <a class="btn" href="posts.html#what">What this is</a>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h2>How I publish here</h2>
+          <p>
+            Short texts. Clear titles. One page per post. Easy to link, easy to read — built to last.
+          </p>
+        </div>
+        <div class="card">
+          <h2>Contact</h2>
+          <p class="mono">
+            twostepsbehinde.project@gmail.com
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © <span class="mono">TwoStepsBehind</span> — built on GitHub Pages.
+    </footer>
+  </div>
+</body>
+</html>
