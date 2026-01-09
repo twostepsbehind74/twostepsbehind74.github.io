@@ -158,22 +158,31 @@ color: #1b1a17;
     }
 
     .mail a{ color: inherit; }
-  </style>
+  </style>.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  text-decoration:none;
+  color:var(--text);
+}
+
+.logo{
+  width:42px;
+  height:42px;
+  object-fit:contain;
+  border-radius:12px;
+  box-shadow:0 10px 30px rgba(0,0,0,.45);
+}
+
 </head>
 
 <body>
   <div class="wrap">
-    <header>
-      <div class="brand">
-        <div class="name">Two Steps Behind</div>
-      </div>
+    <a class="brand" href="/">
+  <img src="/assets/logo.png" alt="Two Steps Behind logo" class="logo">
+  <span class="name">Two Steps Behind</span>
+</a>
 
-      <nav>
-        <a href="/">Home</a>
-        <a href="/posts.html">Posts</a>
-        <a href="/about.html">About</a>
-      </nav>
-    </header>
 
     <section class="hero">
       <h1>Observations from the human field.</h1>
