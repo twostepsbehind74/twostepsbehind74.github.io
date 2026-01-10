@@ -4,59 +4,282 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Posts — Two Steps Behind</title>
-  <meta name="description" content="Posts and writings" />
+  <meta name="description" content="Short texts. Clear titles. One page per post." />
+
   <style>
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Arial,sans-serif;margin:0;line-height:1.6}
-    main{max-width:780px;padding:48px 20px;margin:0 auto}
-    nav{margin-bottom:26px}
-    nav a{margin-right:14px;text-decoration:none;border-bottom:1px solid rgba(0,0,0,.25)}
-    h1{margin:0 0 10px;font-size:34px;letter-spacing:-.02em}
-    <article class="post">
-  <h2>The first signal</h2>
-  <time datetime="2026-01-09">2026-01-09</time>
+    :root{
+      --bg: #0f1110;
+      --card: rgba(22, 24, 22, .72);
+      --card2: rgba(30, 32, 30, .58);
+      --text: #f1eee7;
+      --muted: rgba(241,238,231,.70);
+      --hair: rgba(241,238,231,.12);
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --radius: 18px;
 
-  <p>This isn’t an announcement.<br>
-  It’s a marker.</p>
+      /* “warm aurora” glow */
+      --glowA: rgba(64, 255, 170, .10);
+      --glowB: rgba(255, 200, 120, .08);
+      --glowC: rgba(130, 110, 255, .06);
 
-  <p>I’ve been observing for a long time — people, systems, patterns, myself.<br>
-  Mostly quietly. Mostly from the side.</p>
+      --accent: #f2d6a2;
+      --accent2: rgba(242, 214, 162, .18);
+    }
 
-  <p>This space is not about being right.<br>
-  It’s about being honest enough to leave a trace.</p>
+    *{ box-sizing:border-box; }
 
-  <p>Short texts. Clear thoughts.<br>
-  Written when something feels real enough to share — and not a second before.</p>
+    body{
+      margin:0;
+      color: var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
+      background:
+        radial-gradient(1200px 700px at 15% 0%, var(--glowA), transparent 60%),
+        radial-gradient(900px 600px at 80% 15%, var(--glowB), transparent 62%),
+        radial-gradient(900px 700px at 60% 100%, var(--glowC), transparent 65%),
+        linear-gradient(180deg, #0b0c0b, #101212 45%, #0b0c0b);
+      min-height:100vh;
+    }
 
-  <p>No schedule.<br>
-  No performance.</p>
+    a{ color:inherit; text-decoration:none; }
+    a:hover{ text-decoration:underline; }
 
-  <p>Just signals, left along the road.</p>
-</article>
+    .wrap{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 26px 18px 60px;
+    }
 
-    p{margin:0 0 14px;font-size:18px}
-    ul{padding-left:18px}
-    li{margin:10px 0}
-    .meta{opacity:.7;font-size:14px}
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding: 14px 0 18px;
+      border-bottom: 1px solid var(--hair);
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width: 240px;
+    }
+
+    .logo{
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      object-fit: cover;
+      box-shadow: 0 10px 22px rgba(0,0,0,.40);
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(0,0,0,.15);
+    }
+
+    .brand strong{
+      font-size: 18px;
+      letter-spacing: .2px;
+    }
+    .brand span{
+      display:block;
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    nav{
+      display:flex;
+      gap:18px;
+      align-items:center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    nav a{
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+    }
+    nav a:hover{
+      border-color: var(--hair);
+      background: rgba(255,255,255,.03);
+      text-decoration:none;
+    }
+    nav a.active{
+      color: var(--text);
+      border-color: rgba(242, 214, 162, .22);
+      background: rgba(242, 214, 162, .07);
+    }
+
+    .panel{
+      margin-top: 22px;
+      border-radius: var(--radius);
+      border: 1px solid var(--hair);
+      background: linear-gradient(180deg, var(--card), var(--card2));
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .panelHead{
+      padding: 20px 22px;
+      border-bottom: 1px solid var(--hair);
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    h1{
+      margin:0;
+      font-size: 34px;
+      letter-spacing: .2px;
+    }
+    .subtitle{
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .hint{
+      color: var(--muted);
+      font-size: 13px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--hair);
+      background: rgba(0,0,0,.12);
+      white-space: nowrap;
+    }
+
+    .posts{
+      padding: 16px 16px 10px;
+      display:grid;
+      gap: 12px;
+    }
+
+    .postCard{
+      border: 1px solid var(--hair);
+      border-radius: 16px;
+      background: rgba(0,0,0,.14);
+      padding: 16px 16px 14px;
+      transition: transform .08s ease, background .12s ease, border-color .12s ease;
+    }
+    .postCard:hover{
+      transform: translateY(-1px);
+      background: rgba(0,0,0,.18);
+      border-color: rgba(242, 214, 162, .18);
+    }
+
+    .postTop{
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .postCard h2{
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: .2px;
+    }
+
+    time{
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .postCard p{
+      margin: 10px 0 0;
+      color: rgba(241,238,231,.78);
+      line-height: 1.65;
+      font-size: 14px;
+    }
+
+    .footer{
+      padding: 14px 18px 18px;
+      border-top: 1px solid var(--hair);
+      color: rgba(241,238,231,.55);
+      font-size: 12px;
+      display:flex;
+      justify-content:space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .tag{
+      display:inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--hair);
+      color: var(--muted);
+      background: rgba(0,0,0,.10);
+    }
   </style>
 </head>
+
 <body>
-  <main>
-    <nav>
-      <a href="/">Home</a>
-      <a href="/posts.html">Posts</a>
-      <a href="/about.html">About</a>
-    </nav>
+  <div class="wrap">
+    <header>
+      <a class="brand" href="index.html" aria-label="Back to home">
+        <img class="logo" src="assets/logo.png" alt="TwoStepsBehind logo">
+        <div>
+          <strong>TwoStepsBehind</strong>
+          <span>Newest on top. Short and human.</span>
+        </div>
+      </a>
 
-    <h1>Posts</h1>
-    <p class="meta">Newest on top. Short and human.</p>
+      <nav>
+        <a href="index.html">Home</a>
+        <a class="active" href="posts.html">Posts</a>
+        <a href="about.html">About</a>
+      </nav>
+    </header>
 
-    <ul>
-      <li>
-        <strong>First post title</strong><br />
-        <span class="meta">2026-01-09</span><br />
-        A short one-liner about what this text is.
-      </li>
-    </ul>
-  </main>
+    <section class="panel">
+      <div class="panelHead">
+        <div>
+          <h1>Posts</h1>
+          <p class="subtitle">
+            Short texts. Clear titles. One page per post.
+            Easy to link, easy to read — built to last.
+          </p>
+        </div>
+        <div class="hint">Tip: duplicate a postCard to add more</div>
+      </div>
+
+      <div class="posts">
+
+        <!-- POST #1 -->
+        <article class="postCard">
+          <div class="postTop">
+            <h2>The first signal</h2>
+            <time datetime="2026-01-09">2026-01-09</time>
+          </div>
+
+          <p>
+            This isn’t an announcement. It’s a marker.<br><br>
+
+            I’ve been observing for a long time — people, systems, patterns, myself.
+            Mostly quietly. Mostly from the side.<br><br>
+
+            This space is not about being right.
+            It’s about being honest enough to leave a trace.<br><br>
+
+            Short texts. Clear thoughts.
+            Written when something feels real enough to share — and not a second before.<br><br>
+
+            No schedule. No performance.<br>
+            Just signals, left along the road.
+          </p>
+        </article>
+
+      </div>
+
+      <div class="footer">
+        <span>© TwoStepsBehind — built on GitHub Pages.</span>
+        <span class="tag">Warm aurora • dark calm • human signal</span>
+      </div>
+    </section>
+  </div>
 </body>
 </html>
