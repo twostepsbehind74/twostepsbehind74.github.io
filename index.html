@@ -8,6 +8,21 @@
 
   <style>
     :root{
+      /* mobile safety net: stop horizontal overflow */
+html, body{
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+*, *::before, *::after{
+  box-sizing: border-box;
+}
+
+img, video, svg{
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
       --bg:#141210;
       --card:#1d1a16;
       --text:#f1eee7;
@@ -24,10 +39,37 @@ html, body { max-width: 100%; overflow-x: hidden; }
 img { max-width: 100%; height: auto; }
 
 /* If you use a two-column grid for the small cards, force it to 1 column on mobile */
-@media (max-width: 720px){
-  body { padding: 0; }
-  .wrap { padding: 18px 14px 40px; }
+@media (max-width:860px){
+  .wrap{
+    width: 100%;
+    max-width: 100%;
+    padding: 18px 14px 56px;
+  }
 
+  .grid{
+    grid-template-columns: 1fr;
+  }
+
+  /* IMPORTANT: allow grid children to shrink */
+  .grid > *{
+    min-width: 0;
+  }
+
+  /* ensure cards/panels never exceed viewport */
+  .card, .panel, .panelHead, .cta, .actions{
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* buttons/links that look like buttons */
+  .btn, button, a.btn{
+    max-width: 100%;
+  }
+
+  .hero h1{
+    font-size: 36px;
+  }
+}
   /* Common patterns: cards row / grid */
   .grid, .cards, .row, .cols {
     display: grid !important;
