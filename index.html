@@ -9,6 +9,11 @@
   <style>
     :root{
       /* mobile safety net: stop horizontal overflow */
+     /* allow long emails/urls to wrap inside cards */
+.contact, .contact a, .panel a, .card a {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+} 
 html, body{
   max-width: 100%;
   overflow-x: hidden;
