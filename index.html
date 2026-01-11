@@ -167,6 +167,27 @@ img { max-width: 100%; height: auto; }
       color:#1a140c;
       border-color:rgba(0,0,0,.15);
     }
+    @media (max-width:860px){
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  /* Force ALL card-like rows to behave on mobile */
+  .actions,
+  .buttons,
+  .panel,
+  .panelHead,
+  .card,
+  .cta{
+    display:block;
+    width:100%;
+    max-width:100%;
+  }
+
+  .hero h1{
+    font-size:36px;
+  }
+    }
 
     .grid{
       display:grid;
@@ -174,10 +195,7 @@ img { max-width: 100%; height: auto; }
       gap:16px;
       margin-top:16px;
     }
-    @media (max-width:860px){
-      .grid{grid-template-columns:1fr}
-      .hero h1{font-size:36px}
-    }
+    
 
     .card{
       background:rgba(0,0,0,.18);
