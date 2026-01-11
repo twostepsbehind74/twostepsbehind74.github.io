@@ -5,6 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Two Steps Behind</title>
   <meta name="description" content="Observations from the human field." />
+  /* Fix: long email should wrap on mobile */
+.contact, .contact a{
+  max-width: 100%;
+}
+
+.contact a{
+  display: inline-block;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  white-space: normal;
+}
 
   <style>
     :root{
@@ -309,16 +320,10 @@ img { max-width: 100%; height: auto; }
             Short texts. Clear titles. One page per post. Easy to link, easy to read — built to last.
           </p>
         </div>
-        <div class="card">
-          <h2>Contact</h2>
-          <p class="mono">
-           <a href="mailto:twostepsbehinde.project@gmail.com">
-  two<wbr>steps<wbr>behinde<wbr>.project<wbr>@gmail<wbr>.com
-           </a>
-          </p>
+        <div class="card contact">
+  <h3>Contact</h3>
+  <a href="mailto:twostepsbehind.project@gmail.com">twostepsbehind.project@gmail.com</a>
         </div>
-      </div>
-    </section>
 
     <footer>
       © <span class="mono">TwoStepsBehind</span> — built on GitHub Pages.
