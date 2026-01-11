@@ -17,6 +17,37 @@
       --shadow:0 16px 50px rgba(0,0,0,.55);
       --radius:18px;
     }
+    /* ---- Mobile safety net (fix overflow / too-wide cards) ---- */
+* { box-sizing: border-box; }
+html, body { max-width: 100%; overflow-x: hidden; }
+
+img { max-width: 100%; height: auto; }
+
+/* If you use a two-column grid for the small cards, force it to 1 column on mobile */
+@media (max-width: 720px){
+  body { padding: 0; }
+  .wrap { padding: 18px 14px 40px; }
+
+  /* Common patterns: cards row / grid */
+  .grid, .cards, .row, .cols {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  /* If your buttons sit side-by-side */
+  .actions, .buttons, .cta {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  /* Make any “card” obey the screen width */
+  .card, .panel, .box {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
 
     *{box-sizing:border-box}
   body {
