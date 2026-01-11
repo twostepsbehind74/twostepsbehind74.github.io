@@ -312,7 +312,11 @@ img { max-width: 100%; height: auto; }
         <div class="card">
           <h2>Contact</h2>
           <p class="mono">
-            twostepsbehinde.project@gmail.com
+           /* allow long emails/urls to wrap inside cards */
+.contact, .contact a, .panel a, .card a {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+} 
           </p>
         </div>
       </div>
